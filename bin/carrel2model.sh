@@ -7,12 +7,11 @@
 
 
 # configure
-CARRELS='./etc/carrels'
+CARRELS='./carrels'
 ETC='./html/etc'
 CORPUS2FILE='./bin/corpus2file.sh'
-HTML='./html'
 TEMPLATE2HTML='./bin/template2html-model.sh'
-TXT='txt'
+TXT='txt/*.txt'
 
 # sanity check
 if [[ -z $1 ]]; then
@@ -24,6 +23,6 @@ fi
 CARREL=$1
 
 # do the work and done
-find "$CARRELS/$CARREL/$TXT" -name "*.txt" | parallel $CORPUS2FILE {} > "$ETC/$CARREL-model.txt"
-$TEMPLATE2HTML $CARREL > "$HTML/$CARREL-model.html"
+find $CARRELS/$CARREL/$TXT | parallel $CORPUS2FILE {} > "$CARRELS/$CARREL/etc/$CARREL-model.txt"
+$TEMPLATE2HTML $CARREL > "$CARRELS/$CARREL/$CARREL-model.html"
 exit

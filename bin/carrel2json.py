@@ -12,7 +12,7 @@
 # configure
 PUNCTUATION = '!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n'
 POS         = 'NN'
-CARRELS     = './etc/carrels'
+CARRELS     = './carrels'
 WEIGHT      = 0
 
 # require

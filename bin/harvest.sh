@@ -3,7 +3,7 @@
 # harvest.sh - given the short name of a study carrel, cache it locally
 
 
-CARRELS='./etc/carrels'
+CARRELS='./carrels'
 TMP='./tmp'
 URL='http://carrels.distantreader.org/library'
 ZIP='study-carrel.zip'

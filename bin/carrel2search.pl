@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 # configure
-use constant CARRELS  => './etc/carrels';
+use constant CARRELS  => './carrels';
 use constant DATABASE => 'etc/reader.db';
 use constant DRIVER   => 'SQLite';
 use constant QUERY    => 'SELECT id, title, summary FROM bib;';
