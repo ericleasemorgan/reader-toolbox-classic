@@ -12,7 +12,7 @@ MAXIMUM   = 0.95
 MINIMUM   = 2
 STOPWORDS = 'english'
 EXTENSION = '.txt'
-DIRECTORY = './library/morgan/txt'
+DIRECTORY = './library/homer/txt'
 
 # require
 from mpl_toolkits.mplot3d import Axes3D

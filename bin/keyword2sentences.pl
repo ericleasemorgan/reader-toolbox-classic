@@ -17,7 +17,7 @@ if ( ! $carrel or ! $keyword ) { die "Usage $0 <carrel> <keyword>\n" }
 
 # initialize
 my $driver    = DRIVER; 
-my $database  = "./carrels/$carrel" . DATABASE;
+my $database  = "./library/$carrel" . DATABASE;
 my $dbh       = DBI->connect( "DBI:$driver:dbname=$database", '', '', { RaiseError => 1 } ) or die $DBI::errstr;
 binmode( STDOUT, ':utf8' );
 

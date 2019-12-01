@@ -7,24 +7,29 @@
 
 
 # configure
-VECTORS = './library/love-stories/etc/reader.vec'
-N   = 10
+CARRELS = './library'
+N       = 10
 
 # require
 from gensim.models import KeyedVectors
 import sys
 
 # sanity check
-if len( sys.argv ) != 2 :
-	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <word>\n" )
+if len( sys.argv ) != 3 :
+	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <name> <word>\n" )
 	exit()
 
+# initialize
+name    = sys.argv[ 1 ]
+carrel  = CARRELS + '/' + name
+etc     = carrel + '/etc'
+vectors = etc + '/' + name + '.vec'
 
 # load the index
-index = KeyedVectors.load_word2vec_format( VECTORS, binary=True)
+index = KeyedVectors.load( vectors, mmap = 'r' )
 
 # search and output
-for word, score in index.most_similar( positive = sys.argv[ 1 ], topn = N ) :
+for word, score in index.most_similar( positive = sys.argv[ 2 ], topn = N ) :
 	print( "\t".join( [ word, str( score ) ] ) )
 
 # done
