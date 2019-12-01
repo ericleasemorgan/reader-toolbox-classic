@@ -1,0 +1,5 @@
+LONGNAME	Aliens
+SCOPENOTE	A collection of science fiction stories from Project Gutenberg featuring extra-terrestrials
+CREATOR	Eric Lease Morgan
+EMAIL	emorgan@nd.edu
+CREATIONDATE	August 23, 2019

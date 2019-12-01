@@ -1,0 +1,5 @@
+LONGNAME	Stories about Rome
+SCOPENOTE	From Project Gutenberg, a set of fiction taking place in Rome (Italy)
+CREATOR	Eric Lease Morgan
+EMAIL	emorgan@nd.edu
+CREATIONDATE	August 23, 2019

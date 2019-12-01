@@ -35,6 +35,7 @@ model      = LatentDirichletAllocation( n_components=topics, learning_method='ba
 vectors = vectorizer.fit_transform( filenames )
 model.fit( vectors )
 
+
 # extract features and associate modeled topics with documents
 features  = vectorizer.get_feature_names()
 documents = pd.DataFrame( model.transform( vectors ) )

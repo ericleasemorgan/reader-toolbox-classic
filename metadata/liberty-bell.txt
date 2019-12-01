@@ -1,0 +1,5 @@
+LONGNAME	Liberty Bell
+SCOPENOTE	A collection essays, writings, etc whose content contains the phrase "liberty bell" from Project Gutenberg
+CREATOR	Eric Lease Morgan
+EMAIL	emorgan@nd.edu
+CREATIONDATE	November 28, 2019

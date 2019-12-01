@@ -1,0 +1,5 @@
+LONGNAME	Eric Lease Morgan
+SCOPENOTE	This "study carrel" is the sum of Eric Morgan's Musings and blog postings from over the years.
+CREATOR	Eric Lease Morgan
+EMAIL	emorgan@nd.edu
+CREATIONDATE	August 23, 2019

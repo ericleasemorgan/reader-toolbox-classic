@@ -7,7 +7,7 @@
 
 
 # configure
-VECTORS = './etc/reader.vec'
+VECTORS = 'carrels/paris/etc/reader.vec'
 N   = 10
 
 # require

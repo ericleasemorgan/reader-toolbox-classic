@@ -1,0 +1,5 @@
+LONGNAME	Selected American authors
+SCOPENOTE	Various and sundry writings from relatively early American authors garnered from Project Gutenberg
+CREATOR	Eric Lease Morgan
+EMAIL	emorgan@nd.edu
+CREATIONDATE	November 30, 2019
