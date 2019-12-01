@@ -1,4 +1,5 @@
 .DS_Store
 etc/carrels/*
-tmp/*.zip
+tmp/*
 carrels/*
+library/*
