@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # classify.pl - list most significant words in a text; based on http://en.wikipedia.org/wiki/Tfidf
 
@@ -8,7 +8,7 @@
 
 
 # define
-use constant LOWERBOUNDS  => .01;
+use constant LOWERBOUNDS  => .05;
 use constant EXTRAS       => ( 'upon', 'one', 'though', 'will', 'shall', 'yet', 'thus', 'thou' );
 
 my $directory = $ARGV[ 0 ];

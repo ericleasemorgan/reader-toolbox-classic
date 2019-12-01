@@ -7,7 +7,7 @@
 
 
 # configure
-VECTORS = './etc/reader.vec'
+VECTORS = './library/love-stories/etc/reader.vec'
 N   = 10
 
 # require
@@ -21,10 +21,10 @@ if len( sys.argv ) != 2 :
 
 
 # load the index
-index = KeyedVectors.load( VECTORS, mmap = 'r' )
+index = KeyedVectors.load_word2vec_format( VECTORS, binary=True)
 
 # search and output
-for word, score in index.most_similar( positive = sys.argv[ 2 ], topn = N ) :
+for word, score in index.most_similar( positive = sys.argv[ 1 ], topn = N ) :
 	print( "\t".join( [ word, str( score ) ] ) )
 
 # done

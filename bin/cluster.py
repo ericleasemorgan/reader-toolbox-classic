@@ -12,7 +12,7 @@ MAXIMUM   = 0.95
 MINIMUM   = 2
 STOPWORDS = 'english'
 EXTENSION = '.txt'
-DIRECTORY = './etc/carrels/morgan/txt'
+DIRECTORY = './library/morgan/txt'
 
 # require
 from mpl_toolkits.mplot3d import Axes3D

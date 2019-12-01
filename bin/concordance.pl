@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # concordance.pl - rudimentary KWIC search engine
 
