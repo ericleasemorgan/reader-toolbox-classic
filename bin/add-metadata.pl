@@ -3,7 +3,7 @@
 
 # configure
 use constant DATA    => './metadata';
-use constant CARRELS => './carrels';
+use constant CARRELS => './library';
 
 # require
 use strict;

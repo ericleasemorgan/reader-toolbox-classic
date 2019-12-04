@@ -1,0 +1,5 @@
+LONGNAME	The Iliad and the Odessy by Homer
+SCOPENOTE	This carrel contains each chapter from Homer's Iliad and Odessy. 
+CREATOR	Eric Lease Morgan
+EMAIL	emorgan@nd.edu
+CREATIONDATE	November 30, 2019
