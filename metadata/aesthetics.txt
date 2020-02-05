@@ -1,0 +1,5 @@
+LONGNAME	Aesthetics
+SCOPENOTE	A collection of books from Project Gutenberg classified with a subject of aesthetics.
+CREATOR	Eric Lease Morgan
+EMAIL	emorgan@nd.edu
+CREATIONDATE	December 4, 2019
