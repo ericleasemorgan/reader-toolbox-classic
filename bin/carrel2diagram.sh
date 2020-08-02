@@ -8,7 +8,7 @@
 
 # configure
 CARREL2JSON='./bin/carrel2json.py'
-CARRELS='./carrels'
+CARRELS='./library'
 TEMPLATE2HTML='./bin/template2html-diagram.sh'
 
 # sanity check
@@ -23,4 +23,5 @@ CARREL=$1
 # do the work and done
 $CARREL2JSON   $CARREL > "$CARRELS/$CARREL/etc/$CARREL.json"
 $TEMPLATE2HTML $CARREL > "$CARRELS/$CARREL/$CARREL-diagram.html"
+open "$CARRELS/$CARREL/$CARREL-diagram.html"
 exit

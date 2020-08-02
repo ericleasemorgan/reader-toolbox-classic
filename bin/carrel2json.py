@@ -12,7 +12,7 @@
 # configure
 PUNCTUATION = '!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n'
 POS         = 'NN'
-CARRELS     = './carrels'
+CARRELS     = './library'
 WEIGHT      = 0
 
 # require
@@ -23,6 +23,7 @@ import numpy as np
 import os
 import pandas as pd
 import sys
+ 
 
 # sanity check
 if len( sys.argv ) != 2 :

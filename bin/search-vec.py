@@ -16,7 +16,7 @@ import sys
 
 # sanity check
 if len( sys.argv ) != 3 :
-	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <name> <word>\n" )
+	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <carrel> <word>\n" )
 	exit()
 
 # initialize

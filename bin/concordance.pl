@@ -5,6 +5,12 @@
 # Eric Lease Morgan <eric_morgan@infomotions.com>
 # June    7, 2009 - first investigations using Lingua::Concordance
 # August 29, 2010 - added cool bar chart
+# August 2, 2020  - tweaked to be study-carrel specific; easier to use but less flexible
+
+
+# configure
+use constant LIBRARY => './library';
+use constant CORPUS  => 'etc/reader.txt';
 
 # include
 use lib './lib';
@@ -12,18 +18,23 @@ use Lingua::Concordance;
 use Text::BarGraph;
 use strict;
 
-# configure
-my $file  = $ARGV[ 0 ];
-my $query = $ARGV[ 1 ];
-if ( ! $file or ! $query ) {
+# sanity check
+my $carrel = $ARGV[ 0 ];
+my $query  = $ARGV[ 1 ];
+if ( ! $carrel or ! $query ) {
 
-	print "Usage: $0 <file> <regular_expression>\n";
+	print "Usage: $0 <carrel> <regular_expression>\n";
 	exit;
 	
 }
 
+# initialize
+my $library = LIBRARY;
+my $corpus  = CORPUS;
+my $file    = "$library/$carrel/$corpus";
+
 # slurp
-open INPUT, "$file" or die "Can't open input: $!\n";
+open INPUT, "$file" or die "Can't open $file: $!\n";
 my $text = do { local $/; <INPUT> };
 close INPUT;
 
