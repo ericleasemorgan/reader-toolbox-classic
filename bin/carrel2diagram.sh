@@ -12,16 +12,17 @@ CARRELS='./library'
 TEMPLATE2HTML='./bin/template2html-diagram.sh'
 
 # sanity check
-if [[ -z $1 ]]; then
-	echo "Usage: $0 <carrel>" >&2
+if [[ -z $1 || -z $2 ]]; then
+	echo "Usage: $0 <carrel> <NN|NNS|NNP|NNPS>" >&2
 	exit
 fi
 
 # get input 
 CARREL=$1
+POS=$2
 
 # do the work and done
-$CARREL2JSON   $CARREL > "$CARRELS/$CARREL/etc/$CARREL.json"
-$TEMPLATE2HTML $CARREL > "$CARRELS/$CARREL/$CARREL-diagram.html"
-open "$CARRELS/$CARREL/$CARREL-diagram.html"
+$CARREL2JSON --path="$CARRELS/$CARREL/pos/" --pos="$POS" --cooccur --weight=2 > "$CARRELS/$CARREL/etc/$CARREL.json"
+$TEMPLATE2HTML $CARREL > "$CARRELS/$CARREL/htm/network-diagram.htm"
+open "$CARRELS/$CARREL/htm/network-diagram.htm"
 exit

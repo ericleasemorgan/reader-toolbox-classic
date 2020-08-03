@@ -5,30 +5,39 @@
 # Eric Lease Morgan <eric_morgan@infomotions.com>
 # April 10, 2009 - first investigations; based on search.pl
 # April 12, 2009 - added dynamic corpus
+# August 3, 2020 - migrated for use with study carrels; easier to use but less flexible
 
 
 # define
 use constant LOWERBOUNDS  => .005;
-use constant EXTRAS       => ( 'upon', 'one', 'though', 'will', 'shall', 'yet', 'thus', 'thou' );
-
-my $directory = $ARGV[ 0 ];
-if ( ! $directory ) { die "Usage $0 <directory>\n" }
+use constant LIBRARY      => './library';
+use constant TXT          => 'txt';
+use constant STOPWORDS    => 'etc/stopwords.txt';
 
 # use/require
 use strict;
-use Lingua::StopWords qw( getStopWords );
 require './etc/tfidf-toolbox.pl';
 
-# initialize
-my @corpus    = &corpus( $directory );
-my $stopwords = &getStopWords( 'en' );
+my $carrel      = $ARGV[ 0 ];
+my $lowerbounds = $ARGV[ 1 ];
+if ( ! $carrel || ! $lowerbounds ) { die "Usage $0 <carrel> <a threshold value between 0 and 1>\n" }
 
-# update stopwords
-foreach ( EXTRAS ) { $$stopwords{ $_ } = 1 }
+# initialize
+my $library   = LIBRARY;
+my $directory = LIBRARY . '/' . $carrel . '/' . TXT;
+my @corpus    = &corpus( $directory );
+
+# get stopwords
+my $stopwords = "$library/$carrel/" . STOPWORDS;
+my %stopwords = ();
+open F, "< $stopwords" or die "Can't open $stopwords ($!)\n";
+while ( <F> ) { chop; $stopwords{ $_ }++ }
+close F;
+
 
 # index, sans stopwords
 my %index = ();
-foreach my $file ( @corpus ) { $index{ $file } = &index( $file, $stopwords ) }
+foreach my $file ( @corpus ) { $index{ $file } = &index( $file, \%stopwords ) }
 
 # classify (tag) each document
 my %terms = ();
@@ -41,7 +50,7 @@ foreach my $file ( @corpus ) {
 	# list tags greater than a given score
 	foreach my $tag ( sort { $$tags{ $b } <=> $$tags{ $a } } keys %$tags ) {
 	
-		if ( $$tags{ $tag } > LOWERBOUNDS ) {
+		if ( $$tags{ $tag } > $lowerbounds ) {
 		
 			$file =~ s/$directory\///e;
 			print "$tag (" . $$tags{ $tag } . ") $file\n";
@@ -56,21 +65,7 @@ foreach my $file ( @corpus ) {
 	}
 	
 	print "\n";
-	
-	# accomodate tags with low scores
-	#if ( ! $found ) {
-	#
-	#	my $n = 0;
-	#	foreach my $tag ( sort { $$tags{ $b } <=> $$tags{ $a } } keys %$tags ) {
-	#		
-	#		$terms{ $tag }++;
-	#		$n++;
-	#		last if ( $n == NUMBEROFTAGS );
-	#		
-	#	}
-	#
-	#}
-		
+			
 }
 
 foreach ( sort { $terms{ $b } <=> $terms{ $a } } keys %terms ) {

@@ -5,12 +5,13 @@
 # Eric Lease Morgan <eric_morgan@infomotions.com>
 # June    7, 2009 - first investigations using Lingua::Concordance
 # August 29, 2010 - added cool bar chart
-# August 2, 2020  - tweaked to be study-carrel specific; easier to use but less flexible
+# August  2, 2020  - tweaked to be study-carrel specific; easier to use but less flexible
 
 
 # configure
 use constant LIBRARY => './library';
 use constant CORPUS  => 'etc/reader.txt';
+use constant RADIUS  => 40;
 
 # include
 use lib './lib';
@@ -42,7 +43,7 @@ close INPUT;
 my $concordance = Lingua::Concordance->new;
 $concordance->text( $text );
 $concordance->query( $query );
-$concordance->radius( 20 );
+$concordance->radius( RADIUS );
 $concordance->sort( 'none' );
 $concordance->ordinal( 1 );
 

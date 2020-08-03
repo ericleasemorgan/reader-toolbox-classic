@@ -2,7 +2,7 @@
 
 
 QUERY='.mode tabs\nselect count(entity) as c, entity from ent where type is "GPE" group by entity order by c desc;'
-DB='./jobs/etc/reader.db'
+DB='../library/austen/etc/reader.db'
 GEOCODER='./coder.py'
 
 echo -e "COUNT\tPLACE\tADDRESS\tQUALITY\tSTATE\tSTATUS\tLAT\tLNG"

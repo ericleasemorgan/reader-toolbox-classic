@@ -4,7 +4,7 @@
 
 # Eric Lease Morgan <eric_morgan@infomotions.com>
 # June   1, 2019 - hacked for the Distant Reader in Washington DC
-# August 2, 2020 - modified to be stud carrel specific; easier to use but less flexible
+# August 2, 2020 - modified to be study carrel specific; easier to use but less flexible
 
 
 # configure
