@@ -9,7 +9,6 @@
 
 
 # define
-use constant LOWERBOUNDS  => .005;
 use constant LIBRARY      => './library';
 use constant TXT          => 'txt';
 use constant STOPWORDS    => 'etc/stopwords.txt';
@@ -34,7 +33,6 @@ open F, "< $stopwords" or die "Can't open $stopwords ($!)\n";
 while ( <F> ) { chop; $stopwords{ $_ }++ }
 close F;
 
-
 # index, sans stopwords
 my %index = ();
 foreach my $file ( @corpus ) { $index{ $file } = &index( $file, \%stopwords ) }
@@ -43,8 +41,8 @@ foreach my $file ( @corpus ) { $index{ $file } = &index( $file, \%stopwords ) }
 my %terms = ();
 foreach my $file ( @corpus ) {
 
-	my $tags = &classify( \%index, $file, [ @corpus ] );
-	my $found = 0;
+	my $tags      = &classify( \%index, $file, [ @corpus ] );
+	my $found     = 0;
 	my $directory = $directory;
 	
 	# list tags greater than a given score

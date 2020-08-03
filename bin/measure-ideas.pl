@@ -2,26 +2,35 @@
 
 # measure-lexicon.pl - given a directory of text files and a lexicon, output tfidf scores
 
-# Eric Lease Morgan <eric_morgan@infomotions.com>
+# Eric Lease Morgan <emorgan@nd.edu>
+# (c) University of Notre Dame; distributed under a GNU Public License
+
 # December 8, 2018 - first cut
+# August   3, 2020 - moved to Reader Toolbox
 
 
 # define
-use constant STOPWORDS => './etc/stopwords.txt';
+use constant STOPWORDS => 'etc/stopwords.txt';
+use constant TXT       => 'txt';
+use constant LIBRARY   => './library';
 
 # use/require
 use strict;
 require './etc/tfidf-toolbox.pl';
 
 # get the input
-my $directory = $ARGV[ 0 ];
-my $lexicon   = $ARGV[ 1 ];
-if ( ! $directory or ! $lexicon ) { die "Usage: $0 <directory> <lexicon>\n" }
+my $carrel  = $ARGV[ 0 ];
+my $lexicon = $ARGV[ 1 ];
+if ( ! $carrel or ! $lexicon ) { die "Usage: $0 <carrel> <lexicon>\n" }
 
 # initialize
-my %index   = ();
-my @corpus  = &corpus( $directory );
-my $lexicon = &slurp_words( $lexicon );
+my $library   = LIBRARY;
+my $stopwords = STOPWORDS;
+my $txt       = TXT;
+$stopwords    = "$library/$carrel/$stopwords";
+my %index     = ();
+my @corpus    = &corpus( "$library/$carrel/$txt");
+my $lexicon   = &slurp_words( $lexicon );
 
 # index the corpus
 foreach my $file ( @corpus ) { $index{ $file } = &index( $file, &slurp_words( STOPWORDS ) ) }
