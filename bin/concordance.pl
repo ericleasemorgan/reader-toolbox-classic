@@ -12,6 +12,7 @@
 use constant LIBRARY => './library';
 use constant CORPUS  => 'etc/reader.txt';
 use constant RADIUS  => 40;
+use constant SORT    => 'right';
 
 # include
 use lib './lib';
@@ -44,11 +45,10 @@ my $concordance = Lingua::Concordance->new;
 $concordance->text( $text );
 $concordance->query( $query );
 $concordance->radius( RADIUS );
-$concordance->sort( 'none' );
+$concordance->sort( SORT );
 $concordance->ordinal( 1 );
 
 # do the work
-print "Snippets from $file containing $query:\n";
 foreach ( $concordance->lines ) { print "  * $_\n" }
 print "\n";
 
