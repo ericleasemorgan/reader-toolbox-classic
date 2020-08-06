@@ -11,7 +11,7 @@
 # configure
 LIBRARY='./library'
 TMP='./tmp'
-URL='http://carrels.distantreader.org/library'
+URL='http://52.188.175.42/carrels'
 ZIP='study-carrel.zip'
 
 # sanity check
