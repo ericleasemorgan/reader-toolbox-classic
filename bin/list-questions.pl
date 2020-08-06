@@ -9,7 +9,8 @@
 
 
 # configure
-use constant DATABASE => './etc/carrels/morgan/etc/reader.db';
+use constant LIBRARY => './library';
+use constant DATABASE => 'etc/reader.db';
 use constant DRIVER   => 'SQLite';
 
 # require
@@ -17,12 +18,13 @@ use DBI;
 use strict;
 
 # sanity check
-my $did = $ARGV[ 0 ];
-if ( ! $did ) { die "Usage $0 <identifier>\n" }
+my $carrel = $ARGV[ 0 ];
+my $did = $ARGV[ 1 ];
+if ( ! $did ) { die "Usage $0 <carrel> <identifier>\n" }
 
 # initialize
 my $driver    = DRIVER; 
-my $database  = DATABASE;
+my $database  = LIBRARY . "/$carrel/" . DATABASE;
 my $dbh       = DBI->connect( "DBI:$driver:dbname=$database", '', '', { RaiseError => 1 } ) or die $DBI::errstr;
 
 # find all documents having the given keyword

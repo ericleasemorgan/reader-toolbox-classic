@@ -6,7 +6,7 @@
 # August 17, 2019 - while investigating Philadelphia as a place to "graduate"
 
 
-CARRELS='./etc/carrels'
+CARRELS='./library'
 LISTQUESTIONS='./bin/list-questions.pl'
 TXT='txt/*.txt'
 
@@ -19,5 +19,5 @@ fi
 CARREL=$1
 
 # do the work and done
-find $CARRELS/$CARREL/$TXT | while read FILE; do echo $( basename $FILE .txt ); done | parallel $LISTQUESTIONS {}
+find $CARRELS/$CARREL/$TXT | while read FILE; do echo $( basename $FILE .txt ); done | parallel $LISTQUESTIONS  $CARREL {}
 exit
