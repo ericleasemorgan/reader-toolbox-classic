@@ -11,7 +11,7 @@
 # configure
 LIBRARY='./library'
 TMP='./tmp'
-URL='http://52.188.175.42/carrels'
+URL='http://reader-library/carrels'
 ZIP='study-carrel.zip'
 
 # sanity check
