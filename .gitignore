@@ -4,3 +4,4 @@ tmp/*
 carrels/*
 library/*
 mallet
+node_modules
