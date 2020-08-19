@@ -1,7 +1,6 @@
 .DS_Store
-etc/carrels/*
-tmp/*
-carrels/*
+db_viewer
 library/*
 mallet
-node_modules
+solr
+tmp/*
