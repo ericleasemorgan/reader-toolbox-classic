@@ -1,6 +1,6 @@
 .DS_Store
-db_viewer
 library/*
 mallet
 solr
 tmp/*
+db_viewer/node_modules/
