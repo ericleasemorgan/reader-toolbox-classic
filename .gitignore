@@ -1,6 +1,7 @@
 .DS_Store
+db_viewer/node_modules/
+db_viewer/yarn.lock
 library/*
 mallet
 solr
 tmp/*
-db_viewer/node_modules/
