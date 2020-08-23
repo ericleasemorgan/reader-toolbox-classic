@@ -5,3 +5,5 @@ library/*
 mallet
 solr
 tmp/*
+.env
+__pycache__
