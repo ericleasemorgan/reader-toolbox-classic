@@ -7,3 +7,4 @@ solr
 tmp/*
 .env
 __pycache__
+db_viewer_py/reader.db
