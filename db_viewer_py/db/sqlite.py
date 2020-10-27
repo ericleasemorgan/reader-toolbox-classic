@@ -8,7 +8,6 @@ def create_connection(db_file):
     :param db_file: database file
     :return: Connection object or None
     """
-    conn = None
     try:
         conn = sqlite3.connect(db_file)
         conn.row_factory = sqlite3.Row
