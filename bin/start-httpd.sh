@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 
-pushd ../db_viewer_py
+python -m http.server &
 open http://localhost:8000
-python webserver.py
-popd

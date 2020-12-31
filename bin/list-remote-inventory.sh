@@ -9,7 +9,7 @@
 
 
 # configure
-INVENTORY='http://52.188.175.42/etc/table.tsv'
+INVENTORY='http://library.distantreader.org/etc/table.tsv'
 
 # beautify, sort of
 echo
