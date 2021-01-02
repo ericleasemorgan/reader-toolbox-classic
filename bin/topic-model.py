@@ -5,6 +5,13 @@
 
 # Eric Lease Morgan <emorgan@nd.edu>
 # June 8, 2019 - re-wrote to use LDA; output pie chart
+# July 9, 2020 - added customized stop word list
+
+
+# configure
+STOPWORDS = 'etc/stopwords.txt'
+LIBRARY   = './library'
+TXT       = 'txt'
 
 
 # require
@@ -18,23 +25,30 @@ import sys
 
 # make sane; check for input
 if len( sys.argv ) < 4 :
-	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <directory> <topics> <dimensions> [outfile]\n" )
+	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <carrel> <topics> <dimensions> [outfile]\n" )
 	exit()
 
 # get input
-directory  = sys.argv[ 1 ]
+carrel     = sys.argv[ 1 ]
 topics     = int( sys.argv[ 2 ] )
 dimensions = int( sys.argv[ 3 ] )
 
+# slurp up stopwords
+
+handle    = open( LIBRARY + '/' + carrel + '/' + STOPWORDS, 'r' )
+stopwords = handle.read().split( '\n' )
+handle.close()
+
 # initialize
+directory  = LIBRARY + '/' + carrel + '/' + TXT 
 filenames  = [ os.path.join( directory, filename ) for filename in os.listdir( directory ) ]
-vectorizer = CountVectorizer( input = 'filename', stop_words='english' )
-model      = LatentDirichletAllocation( n_components=topics, learning_method='batch', random_state = 1 )
+vectorizer = CountVectorizer( input = 'filename', stop_words=stopwords )
+model      = LatentDirichletAllocation( n_components=topics, learning_method='batch', random_state = 42 )
+
 
 # count & tabulate all words in all files, and then create the model
 vectors = vectorizer.fit_transform( filenames )
 model.fit( vectors )
-
 
 # extract features and associate modeled topics with documents
 features  = vectorizer.get_feature_names()

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# documents2vec.py - given a process and/or a file, initialize, update, or close a semantic (word2vec) INDEX
+# documents2vec.py - given a process and/or a file, initialize, update, or close a semantic (word2vec) index
 
 # Eric Lease Morgan <eric_morgan@infomotions.com>
 # October 17, 2018 - first documentation, but written on an airplane from Chicago to Madrid
@@ -24,7 +24,7 @@ import sys
 
 # sanity check
 if len( sys.argv ) != 4 :
-	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <name> <new|update|finish> <file>\n" )
+	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <carrel> <new|update|finish> <file>\n" )
 	exit()
 
 # initialize

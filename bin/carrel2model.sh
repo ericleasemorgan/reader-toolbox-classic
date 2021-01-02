@@ -7,7 +7,7 @@
 
 
 # configure
-CARRELS='./carrels'
+CARRELS='./library'
 ETC='./html/etc'
 CORPUS2FILE='./bin/corpus2file.sh'
 TEMPLATE2HTML='./bin/template2html-model.sh'
@@ -25,4 +25,5 @@ CARREL=$1
 # do the work and done
 find $CARRELS/$CARREL/$TXT | parallel $CORPUS2FILE {} > "$CARRELS/$CARREL/etc/$CARREL-model.txt"
 $TEMPLATE2HTML $CARREL > "$CARRELS/$CARREL/$CARREL-model.html"
+open "$CARRELS/$CARREL/$CARREL-model.html"
 exit

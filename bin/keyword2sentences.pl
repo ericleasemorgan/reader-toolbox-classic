@@ -2,6 +2,12 @@
 
 # keyword2sentences.pl - given a keyword, output all the sentences where it is a keyword
 
+# Eric Lease Morgan <emorgan@nd.edu>
+# (c) University of Notre Dame; distributed under a GNU Public License
+
+# August 3, 2020 - first documentation
+
+
 # configure
 use constant DATABASE => '/etc/reader.db';
 use constant DRIVER   => 'SQLite';

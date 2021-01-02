@@ -4,7 +4,8 @@
 # see --> https://de.dariah.eu/tatom/working_with_text.html
 
 # Eric Lease Morgan <emorgan@nd.edu>
-# October 17, 2017 - first cut; cool, again!
+# October  17, 2017 - first cut; cool, again!
+# February 15, 2020 - moving to workbook
 
 
 # configure
@@ -12,7 +13,7 @@ MAXIMUM   = 0.95
 MINIMUM   = 2
 STOPWORDS = 'english'
 EXTENSION = '.txt'
-DIRECTORY = './library/homer/txt'
+DIRECTORY = './library/'
 
 # require
 from mpl_toolkits.mplot3d import Axes3D
@@ -21,20 +22,21 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.manifold import MDS
 from sklearn.metrics.pairwise import cosine_similarity
 import matplotlib.pyplot as plt
-import numpy as np
 import os
 import sys
 
 # sanity check
-if len( sys.argv ) != 2 :
-	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <dendrogram|cube>\n" )
+if len( sys.argv ) != 3 :
+	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <carrel> <dendrogram|cube>\n" )
 	quit()
 
 # get input
-visualization = sys.argv[ 1 ]
+carrel        = sys.argv[ 1 ]
+visualization = sys.argv[ 2 ]
 
 # initialize & compute
-filenames  = [ os.path.join( DIRECTORY, filename ) for filename in os.listdir( DIRECTORY ) ]
+directory  = DIRECTORY + carrel + "/txt"
+filenames  = [ os.path.join( directory, filename ) for filename in os.listdir( directory ) ]
 vectorizer = TfidfVectorizer( input='filename', max_df=MAXIMUM, min_df=MINIMUM, stop_words=STOPWORDS )
 matrix     = vectorizer.fit_transform( filenames ).toarray()
 distance   = 1 - cosine_similarity( matrix )
@@ -56,7 +58,7 @@ elif visualization == 'cube' :
 
 # error
 else :
-	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <dendrogram|cube>\n" )
+	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <carrel> <dendrogram|cube>\n" )
 	quit()
 
 # output and done

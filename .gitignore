@@ -1,5 +1,10 @@
 .DS_Store
-etc/carrels/*
-tmp/*
-carrels/*
+db_viewer/node_modules/
+db_viewer/yarn.lock
 library/*
+mallet
+solr
+tmp/*
+.env
+__pycache__
+db_viewer_py/reader.db

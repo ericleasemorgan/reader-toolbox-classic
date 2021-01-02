@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# search.py - query a semantic (word2vec) index
+# search-vec.py - query a semantic (word2vec) index
 
 # Eric Lease Morgan <eric_morgan@infomotions.com>
 # October 17, 2018 - first documentation
@@ -8,7 +8,7 @@
 
 # configure
 CARRELS = './library'
-N       = 10
+N       = 20
 
 # require
 from gensim.models import KeyedVectors
@@ -16,7 +16,7 @@ import sys
 
 # sanity check
 if len( sys.argv ) != 3 :
-	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <name> <word>\n" )
+	sys.stderr.write( 'Usage: ' + sys.argv[ 0 ] + " <carrel> <word>\n" )
 	exit()
 
 # initialize

@@ -12,7 +12,7 @@ CARRELS='./library'
 
 # sanity check
 if [[ -z "$1" ]]; then
-	echo "Usage: $0 <name>" >&2
+	echo "Usage: $0 <carrel>" >&2
 	exit
 fi
 
