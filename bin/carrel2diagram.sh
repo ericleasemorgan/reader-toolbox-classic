@@ -8,7 +8,7 @@
 
 # configure
 CARREL2JSON='./bin/carrel2json.py'
-CARRELS='./carrels'
+CARRELS='./library'
 TEMPLATE2HTML='./bin/template2html-diagram.sh'
 
 # sanity check
