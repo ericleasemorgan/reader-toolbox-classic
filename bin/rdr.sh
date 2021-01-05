@@ -8,7 +8,7 @@
 # December 23, 2020 - first cut; at the cabin
 
 
-COMMANDS=( concordance classify browse cluster info-carrel list-local-inventory list-remote-inventory keywords-sentences list-ngrams measure-ideas word2vec-build word2vec-use mallet-build mallet-use play-hangman play-wordsearch )
+COMMANDS=( concordance classify browse cluster extract-features info-carrel list-local-inventory list-remote-inventory keywords-sentences list-ngrams measure-ideas word2vec-build word2vec-use mallet-build mallet-use play-hangman play-wordsearch )
 
 # define usage
 function usage {
@@ -31,7 +31,7 @@ if [[ -z $1 ]]; then usage; fi
 COMMAND=$1
 
 if [[ $COMMAND == 'commands' ]]; then
-	echo "RDR commands include: concordance, classify, browse, cluster, info-carrel, list-local-inventory, list-remote-inventory, keywords-sentences, list-ngrams, measure-ideas, word2vec-build, word2vec-use, mallet-build, mallet-use, play-hangman, play-wordsearch" >&2
+	echo "RDR commands include: concordance, classify, browse, cluster, extract-features, info-carrel, list-local-inventory, list-remote-inventory, keywords-sentences, list-ngrams, measure-ideas, word2vec-build, word2vec-use, mallet-build, mallet-use, play-hangman, play-wordsearch" >&2
 	
 elif [[ $COMMAND == 'concordance' ]]; then
 	CARREL=$2
@@ -52,6 +52,11 @@ elif [[ $COMMAND == 'cluster' ]]; then
 	CARREL=$2
 	OPTIONS=$3
 	$RDR_HOME/bin/cluster.py $CARREL $OPTIONS
+
+elif [[ $COMMAND == 'extract-features' ]]; then
+	CARREL=$2
+	OPTIONS=$3
+	$RDR_HOME/bin/extract-features.py $CARREL $OPTIONS $4 $5
 
 elif [[ $COMMAND == 'info-carrel' ]]; then
 	CARREL=$2

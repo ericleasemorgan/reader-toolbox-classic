@@ -35,7 +35,7 @@ $MALLETHOME/bin/mallet train-topics \
 	--num-topics $TOPICS \
 	--num-top-words $DIMENSIONS \
 	--num-top-docs $TOPDOCS \
-	--num-iterations 1200 \
+	--num-iterations 2400 \
 	--num-threads 10 \
 	--optimize-interval 10 \
 	--output-doc-topics $MODEL/topics.tsv \
