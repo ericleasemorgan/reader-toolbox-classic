@@ -8,7 +8,7 @@ dirs       = [[1, 0], [0, 1], [1, 1], [1, -1], [-1, 0], [0, -1], [-1, -1], [-1, 
 n_rows     = 10
 n_cols     = 10
 grid_size  = n_rows * n_cols
-min_words  = 5
+min_words  = 7
 HIDDENWORD = 'distantreader'
 
 # require
@@ -30,7 +30,7 @@ def read_words(filename):
     with open(filename, "r") as file:
         for line in file:
             s = line.strip().lower()
-            if re.match(r'^[a-z]{3,' + re.escape(str(max_len)) + r'}$', s) is not None:
+            if re.match(r'^[a-z]{4,' + re.escape(str(max_len)) + r'}$', s) is not None:
                 words.append(s)
  
     return words
@@ -149,8 +149,10 @@ def print_result(grid):
  
     size = len(grid.solutions)
  
-    print("Attempts: {0}".format(grid.num_attempts))
-    print("Number of words: {0}".format(size))
+    print()
+    print( "Word search - Homer" )
+    #print("Attempts: {0}".format(grid.num_attempts))
+    #print("Number of words: {0}".format(size))
  
     print("\n     0  1  2  3  4  5  6  7  8  9\n")
     for r in range(0, n_rows):
@@ -166,8 +168,10 @@ def print_result(grid):
  
     if size % 2 == 1:
         print(grid.solutions[size - 1])
- 
- 
+
+    print()
+    print()
+
 if __name__ == "__main__":
     print_result(create_word_search(read_words("words.txt")))
  
