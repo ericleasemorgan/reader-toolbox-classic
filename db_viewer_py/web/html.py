@@ -1,3 +1,5 @@
+from helper import helper
+
 # HTTP RESPONSE CODES
 RC_200 = 200  # success
 RC_301 = 301  # redirect
@@ -28,11 +30,26 @@ def not_found() -> str:
 
 def query_form(**kwargs) -> str:
     query_form = ""
+    database_selects = ""
+    for idx, dbname in enumerate(helper.find_dbs()):
+        checked = "checked" if idx == 0 else ""
+        database_selects += f"""
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="database" id="{dbname}" value="{dbname}" {checked}>
+                <label class="form-check-label" for="{dbname}">{dbname}</label>
+            </div>
+        """
     if kwargs.get('content') and kwargs.get('content') == "query_err":
         query_form = f"""<div class='alert alert-danger' role='alert'>
         Error running query - <span class="font-weight-bold">{kwargs.get('results')}</span>!</div>"""
-    query_form += """
+    query_form += f"""
     <form method="POST" enctype="multipart/form-data" action="/query/run">
+    <fieldset class="form-group row">
+        <div class="col-8">
+            <legend>Select Database</legend>
+            {database_selects}
+        </div>
+    </fieldset>
     <div class="form-group row">
         <div class="col-8">
             <div class="input-group">
@@ -193,7 +210,7 @@ def template(html_body: str):
     <!doctype html>
     <html lang="en">
     <head>
-    <title>Distant Reader Toolbox</title
+    <title>Distant Reader Toolbox</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

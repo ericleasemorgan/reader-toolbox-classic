@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-python -m http.server &
-open http://localhost:8000
+pushd ../db_viewer_py
+echo 'open web browser to http://localhost:8000'
+python webserver.py
+popd
